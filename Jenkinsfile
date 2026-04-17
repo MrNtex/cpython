@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build Deploy Image') {
             steps {
-                sh "docker build -f dockerfile.deploy -t cpython-deploy:3.13-build${env.BUILD_NUMBER} ."
+                sh "docker build -f Dockerfile.deploy -t cpython-deploy:3.13-build${env.BUILD_NUMBER} ."
             }
         }
 
