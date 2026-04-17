@@ -12,17 +12,13 @@ pipeline {
 
         stage('Build Deploy Image') {
             steps {
-                script {
-                    sh 'docker build -f Dockerfile.deploy -t cpython-deploy:3.13-build${BUILD_NUMBER} .'
-                }
+                sh "docker build -f dockerfile.deploy -t cpython-deploy:3.13-build${env.BUILD_NUMBER} ."
             }
         }
 
         stage('Smoke Test') {
             steps {
-                script {
-                    sh "docker run --rm my-cpython-deploy:3.13-build${env.BUILD_NUMBER} ./python -c \"print('Smoke test przeszedl pomyslnie!')\""
-                }
+                sh "docker run --rm cpython-deploy:3.13-build${env.BUILD_NUMBER} ./python -c \"print('Smoke test przeszedl pomyslnie!')\""
             }
         }
     }
