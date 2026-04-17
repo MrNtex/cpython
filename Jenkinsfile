@@ -29,7 +29,7 @@ pipeline {
         stage('Build Deploy Image') {
             steps {
                 script {
-                    sh 'docker build -t my-cpython-deploy:3.13-build${BUILD_NUMBER} .'
+                    sh 'docker build -f Dockerfile.deploy -t cpython-deploy:3.13-build${BUILD_NUMBER} .'
                 }
             }
         }
