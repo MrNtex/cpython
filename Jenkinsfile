@@ -18,7 +18,7 @@ pipeline {
 
         stage('Smoke Test') {
             steps {
-                sh "docker run --rm cpython-deploy:3.13-build${env.BUILD_NUMBER} /cpython/python -c \"print('Smoke test przeszedl pomyslnie!')\""
+                sh "docker run --rm cpython-deploy:3.13-build${env.BUILD_NUMBER} ./python -c \"print('Smoke test przeszedl pomyslnie!')\""
             }
         }
     }
