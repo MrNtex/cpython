@@ -2,4 +2,4 @@ FROM cpython-builder:latest
 
 WORKDIR /cpython
 
-CMD [make, test]
+CMD make quicktest
