@@ -13,21 +13,10 @@ pipeline {
         stage('Test inside Container') {
             steps {
                 script {
-                    stage('Test inside Container') {
-            steps {
-                script {
                     sh 'docker build -f Dockerfile.test -t cpython-tester:${BUILD_NUMBER} .'
                     sh 'docker rm -f cpython-test-run || true'
                     sh 'docker run --name cpython-test-run cpython-tester:${BUILD_NUMBER}'
                     sh 'docker logs cpython-test-run > test-results.log'
-                }
-            }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'test-results.log', fingerprint: true
-                }
-            }
-        }
                 }
             }
             post {
